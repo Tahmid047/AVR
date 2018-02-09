@@ -1,0 +1,315 @@
+
+txSerial.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000001a  00800100  000001a6  0000023a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000001a6  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000082  0080011a  0080011a  00000254  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  00000254  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000097  00000000  00000000  00000920  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      0000002f  00000000  00000000  000009b7  2**0
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000038  00000000  00000000  000009e6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000284  00000000  00000000  00000a1e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000001c4  00000000  00000000  00000ca2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000001e0  00000000  00000000  00000e66  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000084  00000000  00000000  00001048  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    00000153  00000000  00000000  000010cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    000000f4  00000000  00000000  0000121f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000028  00000000  00000000  00001313  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 a8 00 	jmp	0x150	; 0x150 <__vector_20>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e6 ea       	ldi	r30, 0xA6	; 166
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	aa 31       	cpi	r26, 0x1A	; 26
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	aa e1       	ldi	r26, 0x1A	; 26
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	ac 39       	cpi	r26, 0x9C	; 156
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 86 00 	call	0x10c	; 0x10c <main>
+  9e:	0c 94 d1 00 	jmp	0x1a2	; 0x1a2 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <appendSerial>:
+    }
+}
+
+void appendSerial(char c)
+{
+	serialBuffer[serialWritePos] = c;
+  a6:	90 91 1a 01 	lds	r25, 0x011A
+  aa:	e9 2f       	mov	r30, r25
+  ac:	f0 e0       	ldi	r31, 0x00	; 0
+  ae:	e4 5e       	subi	r30, 0xE4	; 228
+  b0:	fe 4f       	sbci	r31, 0xFE	; 254
+  b2:	80 83       	st	Z, r24
+	serialWritePos++;
+  b4:	9f 5f       	subi	r25, 0xFF	; 255
+	
+	if(serialWritePos >= TX_BUFFER_SIZE)
+  b6:	1a f0       	brmi	.+6      	; 0xbe <appendSerial+0x18>
+}
+
+void appendSerial(char c)
+{
+	serialBuffer[serialWritePos] = c;
+	serialWritePos++;
+  b8:	90 93 1a 01 	sts	0x011A, r25
+  bc:	08 95       	ret
+	
+	if(serialWritePos >= TX_BUFFER_SIZE)
+	{
+		serialWritePos = 0;
+  be:	10 92 1a 01 	sts	0x011A, r1
+  c2:	08 95       	ret
+
+000000c4 <serialWrite>:
+	}
+}
+
+void serialWrite(char c[])
+{
+  c4:	1f 93       	push	r17
+  c6:	cf 93       	push	r28
+  c8:	df 93       	push	r29
+  ca:	ec 01       	movw	r28, r24
+	for(uint8_t i = 0; i < strlen(c); i++)
+  cc:	10 e0       	ldi	r17, 0x00	; 0
+  ce:	07 c0       	rjmp	.+14     	; 0xde <serialWrite+0x1a>
+	{
+		appendSerial(c[i]);
+  d0:	fe 01       	movw	r30, r28
+  d2:	e8 0f       	add	r30, r24
+  d4:	f9 1f       	adc	r31, r25
+  d6:	80 81       	ld	r24, Z
+  d8:	0e 94 53 00 	call	0xa6	; 0xa6 <appendSerial>
+	}
+}
+
+void serialWrite(char c[])
+{
+	for(uint8_t i = 0; i < strlen(c); i++)
+  dc:	1f 5f       	subi	r17, 0xFF	; 255
+  de:	81 2f       	mov	r24, r17
+  e0:	90 e0       	ldi	r25, 0x00	; 0
+  e2:	ec 2f       	mov	r30, r28
+  e4:	fd 2f       	mov	r31, r29
+  e6:	df 01       	movw	r26, r30
+  e8:	0d 90       	ld	r0, X+
+  ea:	00 20       	and	r0, r0
+  ec:	e9 f7       	brne	.-6      	; 0xe8 <serialWrite+0x24>
+  ee:	11 97       	sbiw	r26, 0x01	; 1
+  f0:	ae 1b       	sub	r26, r30
+  f2:	bf 0b       	sbc	r27, r31
+  f4:	8a 17       	cp	r24, r26
+  f6:	9b 07       	cpc	r25, r27
+  f8:	58 f3       	brcs	.-42     	; 0xd0 <serialWrite+0xc>
+	{
+		appendSerial(c[i]);
+	}
+	
+	if(UCSR0A & (1 << UDRE0))
+  fa:	80 91 c0 00 	lds	r24, 0x00C0
+  fe:	85 fd       	sbrc	r24, 5
+	{
+		UDR0 = 0;
+ 100:	10 92 c6 00 	sts	0x00C6, r1
+	}
+}
+ 104:	df 91       	pop	r29
+ 106:	cf 91       	pop	r28
+ 108:	1f 91       	pop	r17
+ 10a:	08 95       	ret
+
+0000010c <main>:
+void appendSerial(char c);
+void serialWrite(char  c[]);
+
+int main(void)
+{	
+	UBRR0H = (BRC >> 8);
+ 10c:	10 92 c5 00 	sts	0x00C5, r1
+	UBRR0L =  BRC;
+ 110:	87 e6       	ldi	r24, 0x67	; 103
+ 112:	80 93 c4 00 	sts	0x00C4, r24
+	
+	UCSR0B = (1 << TXEN0)  | (1 << TXCIE0);
+ 116:	88 e4       	ldi	r24, 0x48	; 72
+ 118:	80 93 c1 00 	sts	0x00C1, r24
+	UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
+ 11c:	86 e0       	ldi	r24, 0x06	; 6
+ 11e:	80 93 c2 00 	sts	0x00C2, r24
+	
+	sei();
+ 122:	78 94       	sei
+	
+	serialWrite("HELLO\n\r");
+ 124:	80 e0       	ldi	r24, 0x00	; 0
+ 126:	91 e0       	ldi	r25, 0x01	; 1
+ 128:	0e 94 62 00 	call	0xc4	; 0xc4 <serialWrite>
+	serialWrite("woRLd\n\r");
+ 12c:	88 e0       	ldi	r24, 0x08	; 8
+ 12e:	91 e0       	ldi	r25, 0x01	; 1
+ 130:	0e 94 62 00 	call	0xc4	; 0xc4 <serialWrite>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 134:	2f ef       	ldi	r18, 0xFF	; 255
+ 136:	8d e3       	ldi	r24, 0x3D	; 61
+ 138:	99 e4       	ldi	r25, 0x49	; 73
+ 13a:	21 50       	subi	r18, 0x01	; 1
+ 13c:	80 40       	sbci	r24, 0x00	; 0
+ 13e:	90 40       	sbci	r25, 0x00	; 0
+ 140:	e1 f7       	brne	.-8      	; 0x13a <main+0x2e>
+ 142:	00 c0       	rjmp	.+0      	; 0x144 <main+0x38>
+ 144:	00 00       	nop
+	
+	_delay_ms(1500);
+	
+	serialWrite("GOODByE\n\r");
+ 146:	80 e1       	ldi	r24, 0x10	; 16
+ 148:	91 e0       	ldi	r25, 0x01	; 1
+ 14a:	0e 94 62 00 	call	0xc4	; 0xc4 <serialWrite>
+ 14e:	ff cf       	rjmp	.-2      	; 0x14e <main+0x42>
+
+00000150 <__vector_20>:
+		UDR0 = 0;
+	}
+}
+
+ISR(USART_TX_vect)
+{
+ 150:	1f 92       	push	r1
+ 152:	0f 92       	push	r0
+ 154:	0f b6       	in	r0, 0x3f	; 63
+ 156:	0f 92       	push	r0
+ 158:	11 24       	eor	r1, r1
+ 15a:	8f 93       	push	r24
+ 15c:	9f 93       	push	r25
+ 15e:	ef 93       	push	r30
+ 160:	ff 93       	push	r31
+	if(serialReadPos != serialWritePos)
+ 162:	e0 91 1b 01 	lds	r30, 0x011B
+ 166:	80 91 1a 01 	lds	r24, 0x011A
+ 16a:	e8 17       	cp	r30, r24
+ 16c:	89 f0       	breq	.+34     	; 0x190 <__vector_20+0x40>
+	{
+		UDR0 = serialBuffer[serialReadPos];
+ 16e:	f0 e0       	ldi	r31, 0x00	; 0
+ 170:	e4 5e       	subi	r30, 0xE4	; 228
+ 172:	fe 4f       	sbci	r31, 0xFE	; 254
+ 174:	80 81       	ld	r24, Z
+ 176:	80 93 c6 00 	sts	0x00C6, r24
+		serialReadPos++;
+ 17a:	90 91 1b 01 	lds	r25, 0x011B
+ 17e:	89 2f       	mov	r24, r25
+ 180:	8f 5f       	subi	r24, 0xFF	; 255
+		
+		if(serialReadPos >= TX_BUFFER_SIZE)
+ 182:	1a f0       	brmi	.+6      	; 0x18a <__vector_20+0x3a>
+ISR(USART_TX_vect)
+{
+	if(serialReadPos != serialWritePos)
+	{
+		UDR0 = serialBuffer[serialReadPos];
+		serialReadPos++;
+ 184:	80 93 1b 01 	sts	0x011B, r24
+ 188:	03 c0       	rjmp	.+6      	; 0x190 <__vector_20+0x40>
+		
+		if(serialReadPos >= TX_BUFFER_SIZE)
+		{
+			serialReadPos++;
+ 18a:	9e 5f       	subi	r25, 0xFE	; 254
+ 18c:	90 93 1b 01 	sts	0x011B, r25
+		}
+	}
+ 190:	ff 91       	pop	r31
+ 192:	ef 91       	pop	r30
+ 194:	9f 91       	pop	r25
+ 196:	8f 91       	pop	r24
+ 198:	0f 90       	pop	r0
+ 19a:	0f be       	out	0x3f, r0	; 63
+ 19c:	0f 90       	pop	r0
+ 19e:	1f 90       	pop	r1
+ 1a0:	18 95       	reti
+
+000001a2 <_exit>:
+ 1a2:	f8 94       	cli
+
+000001a4 <__stop_program>:
+ 1a4:	ff cf       	rjmp	.-2      	; 0x1a4 <__stop_program>
